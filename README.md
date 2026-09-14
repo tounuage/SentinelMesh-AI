@@ -4,7 +4,7 @@
 
 > SentinelMesh AI is a cyber-physical intelligence layer that learns IoT device behavior, detects anomalies using machine learning, explains risks, and autonomously applies adaptive responses.
 
-🎥 **Demo Video:** [Insert YouTube Link]
+🎥 **Demo Video:** https://youtu.be/tHQ9lVPxPAY?si=LCI35CEFHrIKVXbQ
 
 ---
 
