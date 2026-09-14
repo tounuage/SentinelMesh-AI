@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# SentinelMesh AI dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React and TypeScript operator interface for the SentinelMesh smart-home security simulator. It presents device telemetry, behavioral readiness, cyber and physical risk, correlated incidents, containment evidence, controller health, and a guided attack-and-recovery demo.
 
-Currently, two official plugins are available:
+See the [main README](../README.md) for complete installation, service startup, API examples, configuration, and limitations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Local development
 
-## React Compiler
+Start the simulator on port 8080 and the security engine on port 8081 first. From this directory:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm ci
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the URL printed by Vite (normally http://127.0.0.1:5173). Development proxies in `vite.config.ts` forward `/sim` to the simulator and `/sec` to the engine.
+
+## Checks
+
+```bash
+npm test
+npm run lint
+npm run build
+```
+
+Use Node 22.12+ in the Node 22 line or a newer supported release such as Node 24. Tests use Node's TypeScript stripping. Build output is written to `dist/`.
+
+`npm run preview` previews static build output. A deployed build requires API routing for `/sim` and `/sec`; the development proxy configuration is not bundled with the frontend.
+
+## Source map
+
+- `src/App.tsx`: main dashboard layout.
+- `src/hooks/useDashboard.ts`: polling, operator actions, and guided demo coordination.
+- `src/api.ts`: backend requests.
+- `src/types.ts`: shared frontend data shapes.
+- `src/components/`: dashboard panels and controls.
+- `src/lib/`: interpretation/formatting helpers and unit tests.
+- `src/index.css`: visual styling.
+
+The autonomous enforcement worker runs in the Python security engine, so closing this UI does not stop backend defense.
