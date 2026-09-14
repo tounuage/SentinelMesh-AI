@@ -147,7 +147,7 @@ SentinelMesh analyzes relationships between devices to understand the wider envi
 
 # Architecture
 
-![Architecture Diagram](./docs/architecture.png)
+![Architecture Diagram](./architecture.png)
 
 ```
                  IoT Simulator
@@ -370,8 +370,7 @@ SentinelMesh-AI/
 │
 ├── tests/
 │
-└── docs/
-    └── architecture.png
+└── architecture.png
 ```
 
 ---
